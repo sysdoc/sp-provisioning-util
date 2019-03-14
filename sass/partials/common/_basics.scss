@@ -1,0 +1,50 @@
+$brand-color-default:gray !default;
+$brand-color-success:green !default; 
+$brand-color-primary:cyan !default;
+$brand-color-danger:lighten(red,20%) !default;
+$brand-color-warning:orange !default;
+
+%box{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+%clearfix{
+    &:before,&:after{
+        content:' ';
+        display:block;
+        clear:both;
+    }
+}
+
+
+body,html{
+    font-family:$brand-font-1;
+}
+
+
+.bg-brand-danger{
+    background-color:$brand-color-danger;
+    color:invert($brand-color-danger);
+}
+
+.bg-brand-success{
+    background-color:$brand-color-success;
+    color:invert($brand-color-success);
+}
+
+.bg-brand-warning{
+    background-color:$brand-color-warning;
+    color:invert($brand-color-warning);
+}
+
+.bg-brand-primary{
+    background-color:$brand-color-primary;
+    color:invert($brand-color-primary);
+}
+
+.bg-brand-default{
+    background-color:$brand-color-default;
+    color:invert($brand-color-default);
+}

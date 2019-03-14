@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src", 
+        "outDir": "./lib", 
+        "module": "commonjs",
+        "target": "es2017",
+        "declaration": true
+    },
+    "exclude": [
+        "./lib/**",
+        "./lib/provisioning/**",
+        "./lib/sharepoint/**",
+        "./lib/**",
+        "./deploy",
+        "./lib/**",
+        "./lib/*.d.ts",
+        "./lib/**/*.d.ts",
+        "./node_modules/**",
+        "./templates/**",
+        "./deploy/**",
+        "./lib/sharepoint/*.d.ts",
+        "./lib/provisioning/*.d.ts"
+    ]
+}

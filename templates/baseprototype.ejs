@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= config.title %> Prototypes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+        <link href="css/main.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3">{{config.title}}</h1>
+                <p class="lead">{{config.description}}</p>
+            </div>
+        </div>
+        <div class="container">
+            <p class="lead">Below is a list of the prototypes in this project</p>
+            <div class="list-group">
+                {% for pt in prototypes %}
+                <a href="{{pt.baseName}}/{{pt.baseName}}.html" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{pt.name}} 
+                        {% if pt.status == 'Done' %}
+                        <span class="badge badge-success badge-pill">Done</span>
+                        {% elif pt.status == 'In Progress' %}
+                        <span class="badge badge-warning badge-pill">In Progress</span>
+                        {% else %}
+                        <span class="badge badge-warning badge-pill">Pending</span>
+                        {% endif %}</h5>
+                    </div>
+                    <p class="mb-1">{{pt.description}}</p>
+                    {% if pt.subtitle %}<small class="text-muted">{{pt.subtitle}}</small>{% endif %}
+                    
+                </a>
+                {% endfor %}
+            </div>
+            {% if config.todos %}
+            <br/>
+            <h2>Project Todo List</h2>
+            {% for key, todos in config.todos | groupby('status') %}
+                <h4>{{key}} Todos</h4>
+                <div class="list-group">
+                {% for todo in todos %}
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{todo.content}}</h5>
+                        {% if todo.jiraIssue %}
+                        <small><a href="{{config.jira.project.self|replace(r/\/rest\/api[\S]+/g,'')}}/browse/{{todo.jiraIssue.key}}">{{todo.jiraIssue.key}}</a></small> 
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h6>
+                        {% if todo.status == 'Done' %}
+                        <span class="badge badge-success badge-pill">Done</span>
+                        {% elif todo.status == 'In Progress' %}
+                        <span class="badge badge-warning badge-pill">In Progress</span>
+                        {% else %}
+                        <span class="badge badge-danger badge-pill">Pending</span>
+                        {% endif %}
+                        {% if todo.group %}<span class="badge badge-primary badge-pill">{{todo.group}}</span>{% endif %}
+                        {% if todo.priority %}<span class="badge badge-warning badge-pill">{{todo.priority}}</span>{% endif %}
+                        </h6> 
+                    </div>
+                    
+                    <p>{% if todo.jiraIssue %}<small class="text-muted">{{todo.jiraIssue.fields.summary}}</small>{% endif %}</p>
+                    <p>{% if todo.jiraIssue %}<small class="text-muted">{{todo.jiraIssue.fields.description}}</small>{% endif %}</p>
+                </div>
+                {% endfor %}
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </body>
+</html>
