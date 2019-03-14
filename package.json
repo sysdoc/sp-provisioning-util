@@ -1,5 +1,5 @@
 {
-  "name": "sp-provisioning-util",
+  "name": "@sysdoc/sp-provisioning-util",
   "version": "1.0.0",
   "description": "A utility library for SharePoint solutions",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "SharePoint"
   ],
   "repository": {
-    "url": "https://github.com/suhdev/sharepoint-util",
+    "url": "git+https://github.com/suhdev/sharepoint-util.git",
     "type": "git"
   },
   "author": "Suhail Abood <suhail.abood@gmail.com>",
@@ -28,5 +28,15 @@
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.1",
     "pretty-data": "^0.40.0"
+  },
+  "bugs": {
+    "url": "https://github.com/suhdev/sharepoint-util/issues"
+  },
+  "homepage": "https://github.com/suhdev/sharepoint-util#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
